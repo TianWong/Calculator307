@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
+
+<GridPane fx:controller="calculator307.CalcController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+	<Text text="Simple Calculator"
+		GridPane.columnIndex="0" GridPane.rowIndex="0"
+		GridPane.columnSpan="2"/>
+	<Label text="Operand1:"
+		GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+	<Label text="Operand2:"
+		GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+	<Label text="Operator:"
+		GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+	<ComboBox fx:id="operators"
+		GridPane.columnIndex="1" GridPane.rowIndex="2">
+		<items>
+			<FXCollections fx:factory="observableArrayList">
+				<String fx:value="+"/>
+				<String fx:value="-"/>
+				<String fx:value="*"/>
+				<String fx:value="/"/>
+			</FXCollections>
+		</items>
+	</ComboBox>
+
+	<Label fx:id="output"
+		GridPane.columnIndex="0" GridPane.rowIndex="3"
+		GridPane.columnSpan="3"/>
+		
+	<Button text="Solve"
+		onAction="#handleSolveAction"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+	
+	<TextField fx:id="operand1"
+		GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+	<TextField fx:id="operand2"
+		GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+</GridPane>
