@@ -26,6 +26,7 @@
 				<String fx:value="-"/>
 				<String fx:value="*"/>
 				<String fx:value="/"/>
+				<String fx:value="log"/>
 			</FXCollections>
 		</items>
 	</ComboBox>
@@ -42,5 +43,9 @@
 		GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 	<TextField fx:id="operand2"
 		GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+	
+	<Text text="**Operand1 is optional for unary operations"
+		GridPane.columnIndex="0" GridPane.rowIndex="5"
+		GridPane.columnSpan="3"/>
 
 </GridPane>

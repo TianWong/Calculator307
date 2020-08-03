@@ -1,5 +1,9 @@
 package calculator307;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -20,11 +24,17 @@ public class CalcController {
 	@FXML
 	TextField operand2;
 	
+	
 	public void handleSolveAction(ActionEvent event) {
+		List<String> binary = new ArrayList<>(Arrays.asList("+", "-", "*", "/")); 
 		try {
-			Double op1 = Double.parseDouble(operand1.getCharacters().toString());
-			Double op2 = Double.parseDouble(operand2.getCharacters().toString());
 			String op = operators.getValue().toString();
+			Double op1 = new Double(0);
+			if(binary.contains(op)) {
+				op1 = Double.parseDouble(operand1.getCharacters().toString());
+			}
+			Double op2 = Double.parseDouble(operand2.getCharacters().toString());
+			
 			Operator oper = OperatorFactory.getOperator(op);
 			Double out = oper.operate(op1, op2);
 			output.setText("= " + out.toString());

@@ -11,6 +11,8 @@ public class OperatorFactory {
 			op = new Multiplication();
 		}else if(input.equals("/")) {
 			op = new Division();
+		}else if(input.equals("log")) {
+			op = new Logarithm();
 		}
 		return op;
 	}
