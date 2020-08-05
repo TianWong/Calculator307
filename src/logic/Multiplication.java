@@ -1,4 +1,4 @@
-package calculator307;
+package logic;
 
 public class Multiplication implements Operator {
 

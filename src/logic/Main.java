@@ -1,4 +1,4 @@
-package calculator307;
+package logic;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

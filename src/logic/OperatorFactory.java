@@ -1,4 +1,4 @@
-package calculator307;
+package logic;
 
 public class OperatorFactory {
 	public static Operator getOperator(String input) {
