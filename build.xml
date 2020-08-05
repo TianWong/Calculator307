@@ -6,15 +6,21 @@
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="DesignPatternCalculator307">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../Applications/Eclipse.app/Contents/Eclipse/"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="JavaFX SDK.libraryclasspath">
         <pathelement location="../../.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_2.3.0.201603030809.jar"/>
     </path>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.13.0.v20200204-1500.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
     <path id="DesignPatternCalculator307.classpath">
         <pathelement location="bin"/>
         <path refid="JavaFX SDK.libraryclasspath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -52,8 +58,43 @@
         <antcall target="build"/>
     </target>
     <target name="Main (2)">
-        <java classname="calculator307.Main" failonerror="true" fork="yes">
+        <java classname="logic.Main" failonerror="true" fork="yes">
             <classpath refid="DesignPatternCalculator307.classpath"/>
         </java>
+    </target>
+    <target name="TestBasicArithmatic">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="testCalculator307.TestBasicArithmatic" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DesignPatternCalculator307.classpath"/>
+        </junit>
+    </target>
+    <target name="TestOperatorFactory">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="testCalculator307.TestOperatorFactory" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DesignPatternCalculator307.classpath"/>
+        </junit>
+    </target>
+    <target name="AllTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="testCalculator307.AllTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DesignPatternCalculator307.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>
